@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+require 'net/http'
+
+SYMBOL = 'GOOGL'
+
+uri = URI "http://download.finance.yahoo.com/d/quotes.csv?s=#{SYMBOL}&f=bc1"
+price, change = Net::HTTP.get(uri).split ','
+
+puts "$#{price}, #{change}"
